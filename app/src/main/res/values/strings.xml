@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Vinilos</string>
+    <string name="app_bienvenida"><b>Bienvenidos!</b></string>
+    <string name="app_boton_ingresar">Ingresar</string>
+    <string name="app_boton_coleccionista">Coleccionista</string>
+    <string name="app_boton_usuario">Usuario</string>
 </resources>

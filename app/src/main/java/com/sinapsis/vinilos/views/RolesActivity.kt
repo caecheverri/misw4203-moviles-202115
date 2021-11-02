@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sinapsis.vinilos.databinding.ActivityRolesBinding
-import com.sinapsis.vinilos.views.albumes.AlbumesActivity
 
 class RolesActivity : AppCompatActivity() {
 
@@ -20,9 +19,9 @@ class RolesActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Evento que invoca el activity de álbumes
+        //Evento que invoca el activity de las opciones de listados
         binding.btColeccionista.setOnClickListener {
-            val intent = Intent(this, AlbumesActivity::class.java)
+            val intent = Intent(this, OpcionesActivity::class.java)
             startActivity(intent)
         }
     }

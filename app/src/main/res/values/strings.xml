@@ -4,4 +4,9 @@
     <string name="app_boton_ingresar">Ingresar</string>
     <string name="app_boton_coleccionista">Coleccionista</string>
     <string name="app_boton_usuario">Usuario</string>
+    <string name="app_menu_albumes">Álbumes</string>
+    <string name="app_menu_artistas">Artistas</string>
+    <string name="app_menu_coleccionistas">Coleccionistas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

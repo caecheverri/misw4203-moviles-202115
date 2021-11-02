@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_disc"
+        android:icon="@drawable/ic_disc_full"
+        android:title="@string/app_menu_albumes"/>
+
+    <item
+        android:id="@+id/ic_artist"
+        android:icon="@drawable/ic_artist"
+        android:title="@string/app_menu_artistas"/>
+
+    <item
+        android:id="@+id/ic_collector"
+        android:icon="@drawable/ic_collector"
+        android:title="@string/app_menu_coleccionistas"/>
+</menu>

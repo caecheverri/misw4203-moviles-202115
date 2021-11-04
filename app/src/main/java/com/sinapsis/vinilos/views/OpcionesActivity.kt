@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ActivityOpcionesBinding
+import com.sinapsis.vinilos.views.fragments.AlbumFragment
 import com.sinapsis.vinilos.views.fragments.ArtistaFragment
 import com.sinapsis.vinilos.views.fragments.ColeccionistaFragment
 
@@ -16,6 +17,7 @@ import com.sinapsis.vinilos.views.fragments.ColeccionistaFragment
 class OpcionesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOpcionesBinding
+    private val albumsFragment = AlbumFragment()
     private val artistasFragment = ArtistaFragment()
     private val coleccionistaFragment = ColeccionistaFragment()
 
@@ -26,10 +28,11 @@ class OpcionesActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        reemplazarFragmento(artistasFragment)
+        reemplazarFragmento(albumsFragment)
 
         binding.btmNavigation.setOnItemSelectedListener {param ->
             when(param.itemId) {
+                R.id.ic_disc -> reemplazarFragmento(albumsFragment)
                 R.id.ic_artist -> reemplazarFragmento(artistasFragment)
                 R.id.ic_collector -> reemplazarFragmento(coleccionistaFragment)
             }

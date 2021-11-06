@@ -45,4 +45,12 @@ class VinilosTest {
         onView(withId(R.id.rvArtista)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun test_listaFragmentoAlbumesVisible() {
+        onView(withId(R.id.btIngresar)).perform(click())
+        onView(withId(R.id.btColeccionista)).perform(click())
+        onView(withId(R.id.ic_disc)).perform(click())
+
+        onView(withId(R.id.rvAlbum)).check(matches(isDisplayed()))
+    }
 }

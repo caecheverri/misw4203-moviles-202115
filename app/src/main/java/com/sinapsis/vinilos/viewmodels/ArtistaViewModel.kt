@@ -12,9 +12,9 @@ class ArtistaViewModel (application: Application) : AndroidViewModel(application
     private val _artistas = MutableLiveData<List<Artista>>()
     val artistas: LiveData<List<Artista>> get() = _artistas
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
     val eventNetworkError: LiveData<Boolean> get() = _eventNetworkError
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
     val isNetworkErrorShown: LiveData<Boolean> get() = _isNetworkErrorShown
 
     private val albumRepository = ArtistaRepository(application)

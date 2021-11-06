@@ -1,19 +1,15 @@
 package com.sinapsis.vinilos.views.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.FragmentArtistaBinding
-import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.viewmodels.ArtistaViewModel
 import com.sinapsis.vinilos.views.adapters.ArtistaAdapter
 
@@ -30,7 +26,7 @@ class ArtistaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentArtistaBinding.inflate(inflater, container, false)
         viewModelAdapter = ArtistaAdapter()
 

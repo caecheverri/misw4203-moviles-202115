@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.ArtistaFragment">
+    tools:context=".views.fragments.AlbumFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvArtista"
+        android:id="@+id/rvAlbum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/artista_item"/>
+        tools:listitem="@layout/album_item"/>
 
 </FrameLayout>

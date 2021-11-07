@@ -15,6 +15,7 @@ class ArtistaViewModel (application: Application) : AndroidViewModel(application
     private var _eventNetworkError = MutableLiveData(false)
     val eventNetworkError: LiveData<Boolean> get() = _eventNetworkError
     private var _isNetworkErrorShown = MutableLiveData(false)
+
     val isNetworkErrorShown: LiveData<Boolean> get() = _isNetworkErrorShown
 
     private val albumRepository = ArtistaRepository(application)

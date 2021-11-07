@@ -18,6 +18,7 @@ class OpcionesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOpcionesBinding
     private val albumsFragment = AlbumFragment()
+
     private val artistasFragment = ArtistaFragment()
     private val coleccionistaFragment = ColeccionistaFragment()
 

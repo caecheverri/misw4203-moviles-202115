@@ -3,6 +3,7 @@ package com.sinapsis.vinilos.models
 /**
  * Implementa el modelo de datos para un Artista
  */
+
 data class Artista (
     val artistaId: Int,
     val nombre: String,

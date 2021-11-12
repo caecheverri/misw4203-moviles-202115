@@ -7,5 +7,7 @@ package com.sinapsis.vinilos.models
 data class Artista (
     val artistaId: Int,
     val nombre: String,
-    val imagen: String
+    val imagen: String,
+    val descripcion: String = "",
+    val fechaNacimiento: String = ""
     )

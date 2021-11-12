@@ -18,4 +18,14 @@ class ArtistaRepository (val application: Application) {
             onError
         )
     }
+
+    /**
+     * Invoca el servicio del adaptador que retorna un artista
+     */
+    fun getArtista(artistaId: Int, callback: (Artista)->Unit, onError: (VolleyError)->Unit) {
+        NetworkServiceAdapter.getInstance(application).getArtista(artistaId, {
+            callback(it)},
+            onError
+        )
+    }
 }

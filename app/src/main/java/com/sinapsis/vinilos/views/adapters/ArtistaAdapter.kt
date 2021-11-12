@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ArtistaItemBinding
 import com.sinapsis.vinilos.models.Artista
+import com.sinapsis.vinilos.views.ArtistaDetalle
 import com.squareup.picasso.Picasso
 
 /**
@@ -46,6 +48,13 @@ class ArtistaAdapter : RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() 
                 .into(it.ivImagenArtista)
 
             it.artista = artista
+        }
+
+        holder.itemView.setOnClickListener {view ->
+            val intent = Intent(view.context, ArtistaDetalle::class.java).apply {
+                putExtra("artistaId", artistas[position].artistaId)
+            }
+            view.context.startActivity(intent)
         }
     }
 

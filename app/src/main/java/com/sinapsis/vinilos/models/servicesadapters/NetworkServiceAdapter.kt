@@ -110,6 +110,27 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     /**
+     * Invoca el servicio del API que retorna un artista dado un id
+     */
+    fun getArtista(artistaId:Int, onComplete:(resp:Artista)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians/$artistaId",
+            { response ->
+                val resp = JSONObject(response)
+                val artista = Artista(
+                    artistaId = resp.getInt("id"),
+                    nombre = resp.getString("name"),
+                    imagen = resp.getString("image"),
+                    descripcion = resp.getString("description"),
+                    fechaNacimiento = resp.getString("birthDate")
+                )
+                onComplete(artista)
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    /**
      * Realiza una petición GET al API
      */
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {

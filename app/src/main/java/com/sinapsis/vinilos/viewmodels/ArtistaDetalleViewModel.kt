@@ -22,12 +22,12 @@ class ArtistaDetalleViewModel (application: Application) : AndroidViewModel(appl
 
     fun getArtista(artistaId: Int) {
         try {
-            viewModelScope.launch(Dispatchers.Main) {
+            viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
                     _artista.postValue(albumRepository.getArtista(artistaId))
                 }
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
             }
         }catch (e: Exception) {
             _eventNetworkError.value = true

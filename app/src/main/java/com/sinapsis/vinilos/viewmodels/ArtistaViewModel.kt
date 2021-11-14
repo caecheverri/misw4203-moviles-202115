@@ -29,13 +29,13 @@ class ArtistaViewModel (application: Application) : AndroidViewModel(application
 
     private fun refreshDataFromNetwork() {
         try {
-            viewModelScope.launch (Dispatchers.Main) {
+            viewModelScope.launch (Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
                     var artistas = albumRepository.getArtistas()
                     _artistas.postValue(artistas)
                 }
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
             }
         }catch (e: Exception) {
             _eventNetworkError.value = true

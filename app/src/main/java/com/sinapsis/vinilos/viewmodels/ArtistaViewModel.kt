@@ -4,6 +4,9 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.models.repositories.ArtistaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Implementa el ViewModel para las funcionalidades de Artista
@@ -25,13 +28,18 @@ class ArtistaViewModel (application: Application) : AndroidViewModel(application
     }
 
     private fun refreshDataFromNetwork() {
-        albumRepository.getArtistas({list ->
-            _artistas.postValue(list)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch (Dispatchers.Main) {
+                withContext(Dispatchers.IO) {
+                    var artistas = albumRepository.getArtistas()
+                    _artistas.postValue(artistas)
+                }
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            }
+        }catch (e: Exception) {
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {

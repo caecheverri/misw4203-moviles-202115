@@ -12,6 +12,9 @@ import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.models.Artista
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * Implementa el patrón Service Adapter para interactuar con el
@@ -65,7 +68,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     /**
      * Invoca el servicio del API que retorna todos los artistas
      */
-    fun getArtistas(onComplete:(resp:List<Artista>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getArtistas() = suspendCoroutine<List<Artista>> { cont ->
         requestQueue.add(getRequest("musicians",
             { response ->
                 val resp = JSONArray(response)
@@ -77,10 +80,32 @@ class NetworkServiceAdapter constructor(context: Context) {
                         nombre = item.getString("name"),
                         imagen = item.getString("image")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
-            {
-                onError(it)
+            { ex ->
+                cont.resumeWithException(ex)
+            }))
+    }
+
+    /**
+     * Invoca el servicio del API que retorna un artista dado un id
+     */
+    suspend fun getArtista(artistaId:Int) = suspendCoroutine<Artista> { cont ->
+        requestQueue.add(getRequest("musicians/$artistaId",
+            { response ->
+                val resp = JSONObject(response)
+                val artista = Artista(
+                    artistaId = resp.getInt("id"),
+                    nombre = resp.getString("name"),
+                    imagen = resp.getString("image"),
+                    descripcion = resp.getString("description"),
+                    fechaNacimiento = resp.getString("birthDate")
+                )
+
+                cont.resume(artista)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
             }))
     }
 

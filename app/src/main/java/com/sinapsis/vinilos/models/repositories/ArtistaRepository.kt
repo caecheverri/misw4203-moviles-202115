@@ -12,11 +12,15 @@ class ArtistaRepository (val application: Application) {
     /**
      * Invoca el servicio del adaptador que retorna todos los artistas
      */
-    fun getArtistas(callback: (List<Artista>)->Unit, onError: (VolleyError)->Unit) {
-        NetworkServiceAdapter.getInstance(application).getArtistas({
-            callback(it)},
-            onError
-        )
+    suspend fun getArtistas(): List<Artista> {
+        return NetworkServiceAdapter.getInstance(application).getArtistas()
+    }
+
+    /**
+     * Invoca el servicio del adaptador que retorna un artista
+     */
+    suspend fun getArtista(artistaId: Int): Artista {
+        return NetworkServiceAdapter.getInstance(application).getArtista(artistaId)
     }
 
     /**

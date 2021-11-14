@@ -4,6 +4,9 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.models.repositories.ArtistaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArtistaDetalleViewModel (application: Application) : AndroidViewModel(application) {
     private val _artista = MutableLiveData<Artista>()
@@ -18,13 +21,18 @@ class ArtistaDetalleViewModel (application: Application) : AndroidViewModel(appl
     private val albumRepository = ArtistaRepository(application)
 
     fun getArtista(artistaId: Int) {
-        albumRepository.getArtista(artistaId, {response ->
-            _artista.postValue(response)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch(Dispatchers.Main) {
+                withContext(Dispatchers.IO) {
+                    _artista.postValue(albumRepository.getArtista(artistaId))
+                }
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            }
+        }catch (e: Exception) {
             _eventNetworkError.value = true
-        })
+        }
+
     }
 
     fun onNetworkErrorShown() {

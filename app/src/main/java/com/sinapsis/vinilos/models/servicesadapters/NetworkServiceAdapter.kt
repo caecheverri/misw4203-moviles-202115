@@ -10,8 +10,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.models.Artista
+import com.sinapsis.vinilos.models.Coleccionista
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 
 /**
  * Implementa el patrón Service Adapter para interactuar con el
@@ -82,6 +84,31 @@ class NetworkServiceAdapter constructor(context: Context) {
             {
                 onError(it)
             }))
+    }
+
+    /**
+     * Invoca el servicio del API que retorna todos los coleccionistas
+    */
+    fun getColeccionistas(onComplete: (resp: List<Coleccionista>) -> Unit, onError: (error: VolleyError) -> Unit){
+        requestQueue.add(getRequest("collectors",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Coleccionista>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Coleccionista(
+                        coleccionistaId = item.getInt("id"),
+                        nombreColeccionista = item.getString("name"),
+                        telefonoColeccionista = item.getString("telephone"),
+                        emailColeccionista =  item.getString("email")
+                    ))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }
+        ))
     }
 
     /**

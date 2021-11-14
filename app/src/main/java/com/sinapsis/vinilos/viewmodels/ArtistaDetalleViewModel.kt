@@ -32,6 +32,7 @@ class ArtistaDetalleViewModel (application: Application) : AndroidViewModel(appl
         }catch (e: Exception) {
             _eventNetworkError.value = true
         }
+
     }
 
     fun onNetworkErrorShown() {

@@ -54,7 +54,6 @@ class VinilosTest {
 
         onView(withId(R.id.rvAlbum)).check(matches(isDisplayed()))
     }
-
     @Test
     fun test_detalleArtistaPosicionDosVisible() {
         onView(withId(R.id.btIngresar)).perform(click())

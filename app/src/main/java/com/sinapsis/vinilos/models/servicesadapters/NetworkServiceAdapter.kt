@@ -13,11 +13,9 @@ import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.models.Coleccionista
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
-
 
 /**
  * Implementa el patrón Service Adapter para interactuar con el
@@ -54,12 +52,12 @@ class NetworkServiceAdapter constructor(context: Context) {
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),
-                                      name = item.getString("name"),
-                                      cover = item.getString("cover"),
-                                      recordLabel = item.getString("recordLabel"),
-                                      releaseDate = item.getString("releaseDate"),
-                                      genre = item.getString("genre"),
-                                      description = item.getString("description")))
+                        name = item.getString("name"),
+                        cover = item.getString("cover"),
+                        recordLabel = item.getString("recordLabel"),
+                        releaseDate = item.getString("releaseDate"),
+                        genre = item.getString("genre"),
+                        description = item.getString("description")))
                 }
                 onComplete(list)
             },
@@ -71,7 +69,6 @@ class NetworkServiceAdapter constructor(context: Context) {
     /**
      * Invoca el servicio del API que retorna todos los artistas
      */
-
     suspend fun getArtistas() = suspendCoroutine<List<Artista>> { cont ->
         requestQueue.add(getRequest("musicians",
             { response ->
@@ -84,7 +81,6 @@ class NetworkServiceAdapter constructor(context: Context) {
                         nombre = item.getString("name"),
                         imagen = item.getString("image")))
                 }
-
                 cont.resume(list)
             },
             { ex ->
@@ -93,30 +89,6 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     /**
-
-     * Invoca el servicio del API que retorna todos los coleccionistas
-    */
-    fun getColeccionistas(onComplete: (resp: List<Coleccionista>) -> Unit, onError: (error: VolleyError) -> Unit){
-        requestQueue.add(getRequest("collectors",
-            { response ->
-                val resp = JSONArray(response)
-                val list = mutableListOf<Coleccionista>()
-                for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Coleccionista(
-                        coleccionistaId = item.getInt("id"),
-                        nombreColeccionista = item.getString("name"),
-                        telefonoColeccionista = item.getString("telephone"),
-                        emailColeccionista =  item.getString("email")
-                    ))
-                }
-                onComplete(list)
-            },
-            {
-                onError(it)
-            }
-        ))
-/**
      * Invoca el servicio del API que retorna un artista dado un id
      */
     suspend fun getArtista(artistaId:Int) = suspendCoroutine<Artista> { cont ->
@@ -139,24 +111,30 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     /**
-     * Invoca el servicio del API que retorna un artista dado un id
+     * Invoca el servicio del API que retorna todos los coleccionistas
      */
-    fun getArtista(artistaId:Int, onComplete:(resp:Artista)->Unit, onError: (error:VolleyError)->Unit){
-        requestQueue.add(getRequest("musicians/$artistaId",
+    fun getColeccionistas(onComplete: (resp: List<Coleccionista>) -> Unit, onError: (error: VolleyError) -> Unit) {
+        requestQueue.add(getRequest("collectors",
             { response ->
-                val resp = JSONObject(response)
-                val artista = Artista(
-                    artistaId = resp.getInt("id"),
-                    nombre = resp.getString("name"),
-                    imagen = resp.getString("image"),
-                    descripcion = resp.getString("description"),
-                    fechaNacimiento = resp.getString("birthDate")
-                )
-                onComplete(artista)
+                val resp = JSONArray(response)
+                val list = mutableListOf<Coleccionista>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i, Coleccionista(
+                            coleccionistaId = item.getInt("id"),
+                            nombreColeccionista = item.getString("name"),
+                            telefonoColeccionista = item.getString("telephone"),
+                            emailColeccionista = item.getString("email")
+                        )
+                    )
+                }
+                onComplete(list)
             },
             {
                 onError(it)
-            }))
+            }
+        ))
     }
 
     /**

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sinapsis.vinilos">
 
-    <uses-sdk
+    <uses-sdk 
         android:maxSdkVersion="30"
         android:minSdkVersion="21"
         android:targetSdkVersion="28" />

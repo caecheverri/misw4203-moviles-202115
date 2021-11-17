@@ -9,4 +9,5 @@
     <string name="app_menu_coleccionistas">Coleccionistas</string>
     <string name="descripcion_imagen_artista">Imágen de un artista</string>
     <string name="descripcion_imagen_app">Imágen inicio aplicación</string>
+    <string name="descripcion_imagen_coleccionista">Imágen de un coleccionista</string>
 </resources>

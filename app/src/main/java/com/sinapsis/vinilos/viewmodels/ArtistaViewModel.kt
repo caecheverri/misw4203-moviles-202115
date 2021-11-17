@@ -32,7 +32,7 @@ class ArtistaViewModel (application: Application) : AndroidViewModel(application
         try {
             viewModelScope.launch (Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var artistas = albumRepository.getArtistas()
+                    val artistas = albumRepository.getArtistas()
                     _artistas.postValue(artistas)
                 }
                 _eventNetworkError.postValue(false)

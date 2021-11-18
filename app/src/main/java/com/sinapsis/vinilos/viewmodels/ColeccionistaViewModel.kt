@@ -1,9 +1,15 @@
 package com.sinapsis.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.sinapsis.vinilos.models.Coleccionista
 import com.sinapsis.vinilos.models.repositories.ColeccionistaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
+
 /**
  * Implementa el ViewModel para las funcionalidades de Coleccionista
  */
@@ -27,7 +33,7 @@ class ColeccionistaViewModel(application: Application) : AndroidViewModel(applic
     init {
         refreshDataFromNetwork()
     }
-
+/**
     private fun refreshDataFromNetwork() {
         coleccionistasRepository.getColeccionistas({ list ->
             _coleccionistas.postValue(list)
@@ -36,6 +42,23 @@ class ColeccionistaViewModel(application: Application) : AndroidViewModel(applic
         },{
             _eventNetworkError.value = true
         })
+    }
+*/
+
+    private fun refreshDataFromNetwork() {
+        try {
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = coleccionistasRepository.getColeccionistas()
+                    _coleccionistas.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
+            _eventNetworkError.value = true
+        }
     }
 
     fun onNetworkErrorShown() {

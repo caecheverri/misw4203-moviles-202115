@@ -33,17 +33,6 @@ class ColeccionistaViewModel(application: Application) : AndroidViewModel(applic
     init {
         refreshDataFromNetwork()
     }
-/**
-    private fun refreshDataFromNetwork() {
-        coleccionistasRepository.getColeccionistas({ list ->
-            _coleccionistas.postValue(list)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })
-    }
-*/
 
     private fun refreshDataFromNetwork() {
         try {

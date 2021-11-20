@@ -121,28 +121,6 @@ class NetworkServiceAdapter constructor(context: Context) {
             ),
         )
     }
-/**
-    fun getColeccionistas(onComplete: (resp: List<Coleccionista>) -> Unit, onError: (error: VolleyError) -> Unit){
-        requestQueue.add(getRequest("collectors",
-            { response ->
-                val resp = JSONArray(response)
-                val list = mutableListOf<Coleccionista>()
-                for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Coleccionista(
-                        coleccionistaId = item.getInt("id"),
-                        nombreColeccionista = item.getString("name"),
-                        telefonoColeccionista = item.getString("telephone"),
-                        emailColeccionista =  item.getString("email")
-                    ))
-                }
-                onComplete(list)
-            },
-            {
-                onError(it)
-            }
-        ))
-        */
 
 /**
      * Invoca el servicio del API que retorna un artista dado un id

@@ -1,7 +1,6 @@
 package com.sinapsis.vinilos.models.repositories
 
 import android.app.Application
-import com.android.volley.VolleyError
 import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter
 
@@ -23,13 +22,4 @@ class ArtistaRepository (val application: Application) {
         return NetworkServiceAdapter.getInstance(application).getArtista(artistaId)
     }
 
-    /**
-     * Invoca el servicio del adaptador que retorna un artista
-     */
-    fun getArtista(artistaId: Int, callback: (Artista)->Unit, onError: (VolleyError)->Unit) {
-        NetworkServiceAdapter.getInstance(application).getArtista(artistaId, {
-            callback(it)},
-            onError
-        )
-    }
 }

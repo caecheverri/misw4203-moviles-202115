@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.ColeccionistaFragment">
+    tools:context=".views.fragments.coleccionistaFragment">
 
   <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvColeccionista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/coleccionista_item"/>
-
 </FrameLayout>

@@ -13,13 +13,15 @@
         android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/descripcion_imagen_artista" />
 
     <TextView
         android:id="@+id/tvNombreArtista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="15sp"
+        android:paddingStart="15sp"
+        android:paddingEnd="15sp"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"

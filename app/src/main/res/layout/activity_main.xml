@@ -33,7 +33,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="2"
         android:baselineAlignBottom="false"
-        app:srcCompat="@drawable/appvinilos" />
+        app:srcCompat="@drawable/appvinilos"
+        android:contentDescription="@string/descripcion_imagen_app" />
 
     <Button
         android:id="@+id/btIngresar"

@@ -11,7 +11,7 @@
         android:layout_height="210dp"
         app:cardCornerRadius="4dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginStart="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +22,8 @@
                 android:id="@+id/ivImagenArtista"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/descripcion_imagen_artista" />
 
             <TextView
                 android:id="@+id/tvNombreArtista"

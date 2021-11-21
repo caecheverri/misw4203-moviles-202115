@@ -1,7 +1,6 @@
 package com.sinapsis.vinilos.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.sinapsis.vinilos.models.Coleccionista
 import com.sinapsis.vinilos.models.repositories.ColeccionistaRepository
@@ -38,7 +37,7 @@ class ColeccionistaViewModel(application: Application) : AndroidViewModel(applic
         try {
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
-                    var data = coleccionistasRepository.getColeccionistas()
+                    val data = coleccionistasRepository.getColeccionistas()
                     _coleccionistas.postValue(data)
                 }
                 _eventNetworkError.postValue(false)

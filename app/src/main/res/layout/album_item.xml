@@ -10,7 +10,7 @@
         android:layout_height="210dp"
         app:cardCornerRadius="4dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="8dp">
+        android:layout_marginStart="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,15 +22,16 @@
                 android:layout_width="160dp"
                 android:layout_height="170dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="3dp"
-                android:scaleType="centerCrop" />
+                android:layout_marginStart="3dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/tvNombreAlbum"
                 android:layout_width="210dp"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:layout_marginLeft="165dp"
+                android:layout_marginStart="165dp"
                 android:layout_marginTop="-170dp"
                 android:text="@{album.name}"
                 android:textStyle="bold" />
@@ -40,7 +41,7 @@
                 android:layout_width="210dp"
                 android:layout_height="120dp"
                 android:gravity="center_horizontal"
-                android:layout_marginLeft="165dp"
+                android:layout_marginStart="165dp"
                 android:layout_marginTop="9dp"
                 android:text="@{album.description}"
                 android:textStyle="bold" />

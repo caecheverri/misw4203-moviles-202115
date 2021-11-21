@@ -1,6 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -14,6 +14,7 @@ import com.sinapsis.vinilos.models.Cancion
 class CancionAdapter : RecyclerView.Adapter<CancionAdapter.CancionViewHolder>() {
 
     var canciones :List<Cancion> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

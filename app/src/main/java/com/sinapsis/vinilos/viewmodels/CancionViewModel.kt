@@ -2,13 +2,8 @@ package com.sinapsis.vinilos.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.models.Cancion
-import com.sinapsis.vinilos.models.repositories.AlbumRepository
 import com.sinapsis.vinilos.models.repositories.CancionRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CancionViewModel(application: Application) :  AndroidViewModel(application){
     private val cancionRepository = CancionRepository(application)

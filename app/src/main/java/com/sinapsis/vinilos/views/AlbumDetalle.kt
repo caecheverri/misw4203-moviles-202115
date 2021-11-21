@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sinapsis.vinilos.databinding.ActivityAlbumDetalleBinding
-import com.sinapsis.vinilos.viewmodels.ArtistaDetalleViewModel
 import com.sinapsis.vinilos.views.fragments.CancionFragment
 
 

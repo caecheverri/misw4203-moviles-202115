@@ -11,6 +11,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.sinapsis.vinilos.views.MainActivity
 import com.sinapsis.vinilos.views.adapters.ArtistaAdapter
+import com.sinapsis.vinilos.views.adapters.AlbumAdapter
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -54,6 +55,17 @@ class VinilosTest {
 
         onView(withId(R.id.rvAlbum)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun test_listaFragmentoDetalleAlbumesVisible() {
+        onView(withId(R.id.btIngresar)).perform(click())
+        onView(withId(R.id.btColeccionista)).perform(click())
+        onView(withId(R.id.ic_disc)).perform(click())
+
+        onView(withId(R.id.rvAlbum)).check(matches(isDisplayed()))
+
+    }
+
     @Test
     fun test_listaFragmentoColeccionistasVisibles()
     {
@@ -63,7 +75,10 @@ class VinilosTest {
         onView(withId(R.id.ic_collector)).perform(click())
 
         onView(withId(R.id.rvColeccionista)).check(matches(isDisplayed()))
+        onView(withId(R.id.rvAlbum)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<AlbumAdapter.AlbumViewHolder>(1, click()))
 
+        onView(withId(R.id.tvNombre)).check(matches(isDisplayed()))
     }
     @Test
     fun test_detalleArtistaPosicionDosVisible() {

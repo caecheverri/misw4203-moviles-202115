@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,12 +11,12 @@ import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.AlbumItemBinding
 import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.views.AlbumDetalle
-import com.sinapsis.vinilos.views.fragments.CancionFragment
 import com.squareup.picasso.Picasso
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
 
     var albums :List<Album> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

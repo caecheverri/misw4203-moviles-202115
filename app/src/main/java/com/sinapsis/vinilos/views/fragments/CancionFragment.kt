@@ -42,7 +42,9 @@ class CancionFragment(private val albumId: String, private val urlAlbum: String)
                 .error(R.drawable.ic_album)
                 .into(binding.ivImagenAlbum)
         })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer { isNetworkError ->
+
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, { isNetworkError ->
+
             if (isNetworkError) onNetworkError()
         })
         return binding.root

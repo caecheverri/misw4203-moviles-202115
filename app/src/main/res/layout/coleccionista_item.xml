@@ -25,7 +25,8 @@
                 android:layout_marginTop="15dp"
                 android:scaleType="centerCrop"
                 tools:ignore="ImageContrastCheck"
-                tools:srcCompat="@drawable/ic_collector" />
+                tools:srcCompat="@drawable/ic_collector"
+                android:contentDescription="Imagen Coleccionista"/>
 
             <TextView
                 android:id="@+id/tvNombreColeccionista"

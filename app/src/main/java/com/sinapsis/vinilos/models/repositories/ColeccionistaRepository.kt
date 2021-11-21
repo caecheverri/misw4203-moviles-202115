@@ -1,7 +1,6 @@
 package com.sinapsis.vinilos.models.repositories
 
 import android.app.Application
-import com.android.volley.VolleyError
 import com.sinapsis.vinilos.models.Coleccionista
 import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter
 

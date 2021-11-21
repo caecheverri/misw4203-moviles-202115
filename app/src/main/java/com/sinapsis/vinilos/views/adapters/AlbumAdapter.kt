@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.AlbumItemBinding
 import com.sinapsis.vinilos.models.Album
+import com.sinapsis.vinilos.views.AlbumDetalle
+import com.sinapsis.vinilos.views.fragments.CancionFragment
 import com.squareup.picasso.Picasso
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
@@ -34,6 +37,14 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
                 .error(R.drawable.ic_person)
                 .into(it.ivImagenAlbum)
             it.album = album
+        }
+
+        holder.itemView.setOnClickListener {view ->
+            val intent = Intent(view.context, AlbumDetalle::class.java).apply {
+                putExtra("albumId", albums[position].albumId)
+                putExtra("urlAlbum", albums[position].cover)
+            }
+            view.context.startActivity(intent)
         }
     }
 

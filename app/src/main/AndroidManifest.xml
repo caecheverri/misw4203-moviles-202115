@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sinapsis.vinilos">
 
-    <uses-sdk 
-        android:maxSdkVersion="30"
-        android:minSdkVersion="21"
-        android:targetSdkVersion="28" />
+    <uses-sdk android:maxSdkVersion="30" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinilos">
+        <activity
+            android:name=".views.AlbumDetalle"
+            android:exported="false" />
         <activity
             android:name=".views.ArtistaDetalle"
             android:exported="false" />

@@ -3,6 +3,7 @@ package com.sinapsis.vinilos.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ActivityOpcionesBinding
 import com.sinapsis.vinilos.views.fragments.AlbumFragment
@@ -18,9 +19,9 @@ class OpcionesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOpcionesBinding
     private val albumsFragment = AlbumFragment()
-
     private val artistasFragment = ArtistaFragment()
     private val coleccionistaFragment = ColeccionistaFragment()
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class OpcionesActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         reemplazarFragmento(albumsFragment)
+
 
         binding.btmNavigation.setOnItemSelectedListener {param ->
             when(param.itemId) {

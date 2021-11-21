@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.models.Artista
+import com.sinapsis.vinilos.models.Cancion
 import com.sinapsis.vinilos.models.Coleccionista
 import org.json.JSONArray
 import org.json.JSONObject
@@ -65,6 +66,26 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+    fun getListCancion(albumId:Int, onComplete:(resp:List<Cancion>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId/tracks",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Cancion>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Cancion(cancionId = item.getInt("id"),
+                        name = item.getString("name"),
+                        duration = item.getString("duration")
+                    ))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
+    }
+
 
     /**
      * Invoca el servicio del API que retorna todos los artistas

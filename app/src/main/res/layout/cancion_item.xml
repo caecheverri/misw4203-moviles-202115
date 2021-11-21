@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="cancion" type="com.sinapsis.vinilos.models.Cancion"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        app:cardCornerRadius="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@{cancion.name}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDuracion"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="-40dp"
+                android:gravity="center_horizontal"
+                android:text="@{cancion.duration}"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -67,19 +67,14 @@ class VinilosTest {
     }
 
     @Test
-    fun test_listaFragmentoColeccionistasVisibles()
-    {
+    fun test_listaFragmentoColeccionistasVisibles() {
         onView(withId(R.id.btIngresar)).perform(click())
-
         onView(withId(R.id.btColeccionista)).perform(click())
         onView(withId(R.id.ic_collector)).perform(click())
 
         onView(withId(R.id.rvColeccionista)).check(matches(isDisplayed()))
-        onView(withId(R.id.rvAlbum)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<AlbumAdapter.AlbumViewHolder>(1, click()))
-
-        onView(withId(R.id.tvNombre)).check(matches(isDisplayed()))
     }
+
     @Test
     fun test_detalleArtistaPosicionDosVisible() {
         onView(withId(R.id.btIngresar)).perform(click())
@@ -89,7 +84,7 @@ class VinilosTest {
         onView(withId(R.id.rvArtista)).check(matches(isDisplayed()))
 
         onView(withId(R.id.rvArtista)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<ArtistaAdapter.ArtistaViewHolder>(3, click()))
+            RecyclerViewActions.actionOnItemAtPosition<ArtistaAdapter.ArtistaViewHolder>(2, click()))
 
         onView(withId(R.id.viewDetalleArtista)).check(matches(isDisplayed()))
     }

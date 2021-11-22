@@ -24,7 +24,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="3dp"
                 android:scaleType="centerCrop"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/descripcion_imagen_album" />
 
             <TextView
                 android:id="@+id/tvNombreAlbum"

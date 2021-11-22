@@ -14,7 +14,7 @@ Aplicación móvil para el uso de coleccionistas y melomanos de álbumes de vini
 |   Face	|  Funcionalidad 	|   Estado	|
 |---	|---	|---	|
 |  Iteración Uno 	| - Listar cátalogo de álbumes, Listar artistas, Opciones de aplicación  	|   Implementado	|
-| Iteración Dos  	| - Consultar información detallada del álbum, Consultar información detalla de artista, consultarlistado coleccionista    	| Por Implementar  	|
+| Iteración Dos  	| - Consultar información detallada del álbum, Consultar información detalla de artista, consultarlistado coleccionista    	| Implementado  	|
 | Iteración Tres  	| - Consultar la información detallada de coleccionista, Crear un álbum, Asociar tracks con un álbum    	| Por Implementar   	|
 
 ***
@@ -38,6 +38,7 @@ $ cd  misw4203-moviles-202115
 ```
 > Para Obtener la APK, del proyecto por favor descargue de:
 - [v1.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v1.0.0) - Vinilos
+- [v2.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v2.0.0) - Vinilos
 ***
 ## Desarrollo
 

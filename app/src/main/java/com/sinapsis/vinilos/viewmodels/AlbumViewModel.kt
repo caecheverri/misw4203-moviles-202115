@@ -33,9 +33,10 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
 
     private fun refreshDataFromNetwork() {
         try {
-            viewModelScope.launch (Dispatchers.Default) {
-                withContext(Dispatchers.IO) {
-                    _albums.postValue(albumsRepository.refreshData())
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = albumsRepository.refreshData()
+                    _albums.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

@@ -1,6 +1,7 @@
 package com.sinapsis.vinilos.views.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ColeccionistaItemBinding
 import com.sinapsis.vinilos.models.Coleccionista
+import com.sinapsis.vinilos.views.ArtistaDetalle
+import com.sinapsis.vinilos.views.ColeccionistaDetalle
 import com.squareup.picasso.Picasso
 
 class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.ColeccionistaViewHolder>() {
@@ -45,6 +48,12 @@ class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.Coleccioni
                 .into(it.ivImagenColeccionista)
 
             it.coleccionista = coleccionista
+        }
+        holder.itemView.setOnClickListener {view ->
+            val intent = Intent(view.context, ColeccionistaDetalle::class.java).apply {
+                putExtra("coleccionistaaId", coleccionistas[position].coleccionistaId)
+            }
+            view.context.startActivity(intent)
         }
     }
 

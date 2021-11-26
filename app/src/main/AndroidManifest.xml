@@ -20,6 +20,9 @@
             android:name=".views.ArtistaDetalle"
             android:exported="false" />
         <activity
+            android:name=".views.ColeccionistaDetalle"
+            android:exported="false" />
+        <activity
             android:name=".views.OpcionesActivity"
             android:exported="false" />
         <activity

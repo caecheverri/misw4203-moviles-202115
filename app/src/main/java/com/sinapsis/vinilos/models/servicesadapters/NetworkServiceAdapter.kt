@@ -167,7 +167,26 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    /**
+     * Invoca el servicio del API que retorna un coleccinista dado un id
+     */
+    suspend fun getColeccionista(ColeccionistaId:Int) = suspendCoroutine<Coleccionista> { cont ->
+        requestQueue.add(getRequest("collectors/$ColeccionistaId",
+            { response ->
+                val resp = JSONObject(response)
+                val coleccionista = Coleccionista(
+                    coleccionistaId = resp.getInt("id"),
+                    nombreColeccionista =  resp.getString("name"),
+                    telefonoColeccionista = resp.getString("telephone"),
+                    emailColeccionista = resp.getString("email")
+                )
 
+                cont.resume(coleccionista)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
+            }))
+    }
     /**
      * Realiza una petición GET al API
      */
@@ -188,4 +207,6 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
     }
+
+
 }

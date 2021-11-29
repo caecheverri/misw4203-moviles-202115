@@ -1,13 +1,11 @@
 package com.sinapsis.vinilos.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ActivityColeccionistaDetalleBinding
 import com.sinapsis.vinilos.viewmodels.ColeccionistaDetalleViewModel
-import com.squareup.picasso.Picasso
 
 /**
  * Implementa el Activity que se usa para mostrar el detalle
@@ -38,6 +36,7 @@ class ColeccionistaDetalle : AppCompatActivity() {
                 /*Picasso.get().load(this.imagen).placeholder(R.drawable.ic_person)
                     .error(R.drawable.ic_person)
                     .into(binding.ivImagenColeccionista)*/
+
             }
         })
 

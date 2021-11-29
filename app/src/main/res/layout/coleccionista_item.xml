@@ -39,7 +39,8 @@
                 android:text="@{coleccionista.nombreColeccionista}"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvTelefonoColeccionista"
@@ -51,7 +52,8 @@
                 android:text="@{coleccionista.telefonoColeccionista}"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/tvEmailColeccionista"

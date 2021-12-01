@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewCrearAlbum"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AlbumCreacion">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/fab_labels_margin"
+            android:paddingTop="@dimen/fab_labels_margin"
+            android:paddingEnd="@dimen/fab_labels_margin"
+            android:paddingRight="@dimen/fab_labels_margin">
+
+            <TextView
+                android:id="@+id/textTituloCreacionAlbum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal|fill_horizontal"
+                android:text="@string/titulo_creacion_album"
+                android:textAlignment="center"
+                android:textColor="#5E5050"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutNombreAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombreAlbum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_frm_nombre_album"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutCover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtCoverAlbum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_frm_url_cover_album"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutDescAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDescAlbum"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_descripcion_album"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutGeneroAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtGeneroAlbum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_frm_genero"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutAnioLanz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtAnioLanz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_frm_anio"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayoutRecordLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtRecordLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="#D3E6EF"
+                    android:hint="@string/label_frm_record_label"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableLayout
+                android:layout_width="388dp"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/idBttnAceptar"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="2dp"
+                        android:text="@string/bttn_frm_add_album_aceptar"
+                        android:textColor="@color/primary_dark"
+                        tools:ignore="TextContrastCheck" />
+
+                    <Button
+                        android:id="@+id/idBttnCancelar"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/bttn_frm_add_album_cancelar"
+                        android:textColor="@color/primary_dark"
+                        tools:ignore="TextContrastCheck" />
+                </TableRow>
+
+            </TableLayout>
+
+            <!--progress bar for loading -->
+            <ProgressBar
+                android:id="@+id/idLoadingPB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.sinapsis.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.sinapsis.vinilos.models.Coleccionista
 import com.sinapsis.vinilos.models.repositories.ColeccionistaRepository

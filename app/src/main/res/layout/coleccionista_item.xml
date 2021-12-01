@@ -35,7 +35,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-black"
-                android:gravity="center_horizontal"
                 android:text="@{coleccionista.nombreColeccionista}"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
@@ -47,11 +46,11 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="-262dp"
                 android:layout_marginTop="55dp"
-                android:gravity="center_horizontal"
                 android:text="@{coleccionista.telefonoColeccionista}"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:translationX="3dp" />
 
             <TextView
                 android:id="@+id/tvEmailColeccionista"

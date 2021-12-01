@@ -89,8 +89,6 @@ class AlbumFragment : Fragment() , View.OnClickListener {
                 val albumCreacion= AlbumCreacion()
                 val activity = requireNotNull(this.activity)
 
-                showToast("Hello From Add Alarm Button")
-
                 activity.run{
                     startActivity(Intent(this, albumCreacion::class.java))
                 }

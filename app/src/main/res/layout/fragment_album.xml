@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".views.fragments.AlbumFragment"
     tools:ignore="HardcodedText">
+    android:layout_marginStart="14dp"
+    android:layout_marginEnd="17dp">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -75,3 +84,6 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/album_item"/>
+</FrameLayout>

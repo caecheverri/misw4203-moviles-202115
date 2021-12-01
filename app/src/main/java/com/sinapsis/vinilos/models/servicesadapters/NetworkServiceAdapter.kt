@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.models.Artista
+import com.sinapsis.vinilos.models.Cancion
 import com.sinapsis.vinilos.models.Coleccionista
 import org.json.JSONArray
 import org.json.JSONObject
@@ -18,6 +19,7 @@ import com.google.gson.Gson
 import com.sinapsis.vinilos.models.Cancion
 import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter.Companion.BASE_URL
 import java.util.*
+
 
 
 /**
@@ -68,13 +70,14 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(getRequest("albums",
             { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
+                var item: JSONObject
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
+                    item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),
                         name = item.getString("name"),
                         cover = item.getString("cover"),
@@ -83,12 +86,33 @@ class NetworkServiceAdapter constructor(context: Context) {
                         genre = item.getString("genre"),
                         description = item.getString("description")))
                 }
+                cont.resume(list)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
+            }))
+    }
+
+    fun getListCancion(albumId:Int, onComplete:(resp:List<Cancion>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId/tracks",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Cancion>()
+                var item:JSONObject
+                for (i in 0 until resp.length()) {
+                    item = resp.getJSONObject(i)
+                    list.add(i, Cancion(cancionId = item.getInt("id"),
+                        name = item.getString("name"),
+                        duration = item.getString("duration")
+                    ))
+                }
                 onComplete(list)
             },
             {
                 onError(it)
             }))
     }
+
 
     /**
      * Invoca el servicio del API que retorna todos los artistas
@@ -99,8 +123,9 @@ class NetworkServiceAdapter constructor(context: Context) {
             { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Artista>()
+                var item:JSONObject
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
+                    item = resp.getJSONObject(i)
                     list.add(i, Artista(
                         artistaId = item.getInt("id"),
                         nombre = item.getString("name"),
@@ -125,8 +150,9 @@ class NetworkServiceAdapter constructor(context: Context) {
                 { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Coleccionista>()
+                    var item:JSONObject
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         val collector = Coleccionista(
                             coleccionistaId = item.getInt("id"),
                             nombreColeccionista = item.getString("name"),
@@ -143,8 +169,8 @@ class NetworkServiceAdapter constructor(context: Context) {
             ),
         )
     }
+    /**
 
-/**
      * Invoca el servicio del API que retorna un artista dado un id
      */
     suspend fun getArtista(artistaId:Int) = suspendCoroutine<Artista> { cont ->
@@ -215,6 +241,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }
         ))
     }
+
 
     /**
      * Invoca el servicio del API que guarda un nuevo Album

@@ -38,8 +38,7 @@ class ColeccionistaViewModel(application: Application) : AndroidViewModel(applic
         try {
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
-                    var data = coleccionistasRepository.getColeccionistas()
-                    _coleccionistas.postValue(data)
+                    _coleccionistas.postValue(coleccionistasRepository.getColeccionistas())
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

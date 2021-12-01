@@ -1,6 +1,7 @@
 package com.sinapsis.vinilos.models
 
 data class Album(
+
     val albumId: Int?=0,
     val name: String="",
     val cover: String="",
@@ -11,3 +12,4 @@ data class Album(
 ) {
    constructor() : this(0,"","","","","")
 }
+

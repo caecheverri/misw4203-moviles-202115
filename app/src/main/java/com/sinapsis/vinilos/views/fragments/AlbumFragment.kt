@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.FragmentAlbumBinding
+import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.viewmodels.AlbumViewModel
 import com.sinapsis.vinilos.views.adapters.AlbumAdapter
 import android.content.Intent
@@ -32,10 +33,19 @@ class AlbumFragment : Fragment() , View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
+        val view = binding.root
         viewModelAdapter = AlbumAdapter()
-        val activity = requireNotNull(this.activity)
+        return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+        //activity.actionBar?.title = getString(R.string.title_albums)
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
-        viewModel.albums.observe(viewLifecycleOwner, {
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this
             }

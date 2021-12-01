@@ -22,4 +22,5 @@
     <string name="bttn_frm_add_album_cancelar">Cancelar</string>
     <string name="bttn_frm_add_album_aceptar">Aceptar</string>
     <string name="fab_text_opcion_agregar_album">Agregar Álbum</string>
+
 </resources>

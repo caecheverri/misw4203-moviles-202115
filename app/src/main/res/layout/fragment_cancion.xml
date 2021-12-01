@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.CancionFragment">
+    <ImageView
+        android:id="@+id/ivImagenAlbum"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        tools:layout_constraintEnd_toEndOf="parent"
+        tools:layout_constraintStart_toStartOf="parent"
+        tools:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/descripcion_imagen_artista" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCancion"
+        android:layout_width="match_parent"
+        android:layout_height="437dp"
+        android:layout_marginTop="285dp"
+        tools:listitem="@layout/cancion_item" />
+
+</FrameLayout>

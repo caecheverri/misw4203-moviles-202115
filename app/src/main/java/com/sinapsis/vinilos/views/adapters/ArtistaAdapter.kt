@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso
  */
 class ArtistaAdapter : RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
     var artistas: List<Artista> = emptyList()
+    @SuppressLint("NotifyDataSetChanged")
     set(value) {
         field = value
         notifyDataSetChanged()

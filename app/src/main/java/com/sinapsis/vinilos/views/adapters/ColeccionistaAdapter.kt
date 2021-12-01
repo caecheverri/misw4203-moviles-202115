@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -7,15 +8,13 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
-import com.sinapsis.vinilos.databinding.AlbumItemBinding
-import com.sinapsis.vinilos.databinding.ArtistaItemBinding
 import com.sinapsis.vinilos.databinding.ColeccionistaItemBinding
-import com.sinapsis.vinilos.models.Artista
 import com.sinapsis.vinilos.models.Coleccionista
 import com.squareup.picasso.Picasso
 
 class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.ColeccionistaViewHolder>() {
     var coleccionistas: List<Coleccionista> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

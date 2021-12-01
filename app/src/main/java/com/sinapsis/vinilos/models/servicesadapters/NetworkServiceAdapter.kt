@@ -15,6 +15,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 import com.google.gson.Gson
+import com.sinapsis.vinilos.models.Cancion
 import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter.Companion.BASE_URL
 import java.util.*
 
@@ -45,6 +46,26 @@ class NetworkServiceAdapter constructor(context: Context) {
     private val requestQueue: RequestQueue by lazy {
         Volley.newRequestQueue(context.applicationContext)
 
+    }
+
+    fun getListCancion(albumId:Int, onComplete:(resp:List<Cancion>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId/tracks",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Cancion>()
+                var item:JSONObject
+                for (i in 0 until resp.length()) {
+                    item = resp.getJSONObject(i)
+                    list.add(i, Cancion(cancionId = item.getInt("id"),
+                        name = item.getString("name"),
+                        duration = item.getString("duration")
+                    ))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
     }
 
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){

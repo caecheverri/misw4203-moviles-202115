@@ -117,6 +117,11 @@ class AlbumCreacion : AppCompatActivity() {
 
         }
 
+        binding.idBttnCancelar.setOnClickListener {
+            showToast("Creación Album Cancelada")
+            finish()
+        }
+
         viewModel.eventNetworkError.observe(this, { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })

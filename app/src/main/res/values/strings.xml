@@ -10,6 +10,7 @@
     <string name="descripcion_imagen_artista">Imágen de un artista</string>
     <string name="descripcion_imagen_app">Imágen inicio aplicación</string>
     <string name="descripcion_imagen_coleccionista">Imágen de un coleccionista</string>
+    <string name="descripcion_imagen_album">Imágen de un álbum</string>
     <string name="titulo_crear_album">Crear Álbum</string>
     <string name="label_frm_nombre_album">Nombre Álbum:</string>
     <string name="titulo_creacion_album">Creación Álbum</string>

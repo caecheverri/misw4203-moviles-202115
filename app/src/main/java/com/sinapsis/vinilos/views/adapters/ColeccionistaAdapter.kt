@@ -2,6 +2,7 @@ package com.sinapsis.vinilos.views.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -41,10 +42,8 @@ class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.Coleccioni
     override fun onBindViewHolder(holder: ColeccionistaViewHolder, position: Int) {
         holder.viewDataBinding.also {
             val coleccionista: Coleccionista = coleccionistas[position]
-            Picasso.get().load(coleccionista.coleccionistaId).placeholder(R.drawable.ic_person)
-                .error(R.drawable.ic_person)
-                .into(it.ivImagenColeccionista)
 
+            it.ivImagenColeccionista.setImageResource(R.drawable.ic_person)
             it.coleccionista = coleccionista
         }
     }

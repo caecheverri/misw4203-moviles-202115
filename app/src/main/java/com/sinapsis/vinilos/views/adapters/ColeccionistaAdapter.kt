@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.ColeccionistaItemBinding
 import com.sinapsis.vinilos.models.Coleccionista
-import com.sinapsis.vinilos.views.ArtistaDetalle
 import com.sinapsis.vinilos.views.ColeccionistaDetalle
-import com.squareup.picasso.Picasso
+
 
 class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.ColeccionistaViewHolder>() {
     var coleccionistas: List<Coleccionista> = emptyList()
@@ -43,15 +42,13 @@ class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.Coleccioni
     override fun onBindViewHolder(holder: ColeccionistaViewHolder, position: Int) {
         holder.viewDataBinding.also {
             val coleccionista: Coleccionista = coleccionistas[position]
-            Picasso.get().load(coleccionista.coleccionistaId).placeholder(R.drawable.ic_person)
-                .error(R.drawable.ic_person)
-                .into(it.ivImagenColeccionista)
-
+            it.ivImagenColeccionista.setImageResource(R.drawable.ic_person)
             it.coleccionista = coleccionista
+
         }
         holder.itemView.setOnClickListener {view ->
             val intent = Intent(view.context, ColeccionistaDetalle::class.java).apply {
-                putExtra("coleccionistaaId", coleccionistas[position].coleccionistaId)
+                putExtra("coleccionistaId", coleccionistas[position].coleccionistaId)
             }
             view.context.startActivity(intent)
         }

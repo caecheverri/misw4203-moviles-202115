@@ -178,7 +178,12 @@ class NetworkServiceAdapter constructor(context: Context) {
                     coleccionistaId = resp.getInt("id"),
                     nombreColeccionista =  resp.getString("name"),
                     telefonoColeccionista = resp.getString("telephone"),
-                    emailColeccionista = resp.getString("email")
+                    emailColeccionista = resp.getString("email"),
+                    commentsColeccionista = "_commets",
+                    favoritePerformersColeccionista = "_favoritePerformers"
+                /*  "comments": [],
+                    "favoritePerformers": [],
+                    "collectorAlbums": []    */
                 )
 
                 cont.resume(coleccionista)

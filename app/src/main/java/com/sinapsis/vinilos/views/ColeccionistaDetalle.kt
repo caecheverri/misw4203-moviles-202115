@@ -32,6 +32,8 @@ class ColeccionistaDetalle : AppCompatActivity() {
                 binding.tvNombreColeccionista.text = this.nombreColeccionista
                 binding.tvTelefonoColeccionista.text = this.telefonoColeccionista
                 binding.tvEmailColeccionista.text = this.emailColeccionista
+                binding.tvcommentsColeccionista.text= this.commentsColeccionista
+                binding.tvfavoritePerformersColeccionista.text = this.favoritePerformersColeccionista
 
                 /*Picasso.get().load(this.imagen).placeholder(R.drawable.ic_person)
                     .error(R.drawable.ic_person)
@@ -58,11 +60,4 @@ class ColeccionistaDetalle : AppCompatActivity() {
         }
     }
 
-    /**
-     * Obtiene del valor recibido la parte que indica la fecha
-     */
-    private fun obtenerFecha(fecha: String): String {
-        val elementos: List<String> = fecha.split("T")
-        return elementos[0]
-    }
 }

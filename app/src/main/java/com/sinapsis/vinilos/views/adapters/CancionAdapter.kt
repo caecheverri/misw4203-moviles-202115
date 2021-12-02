@@ -40,7 +40,6 @@ class CancionAdapter : RecyclerView.Adapter<CancionAdapter.CancionViewHolder>() 
         return canciones.size
     }
 
-
     class CancionViewHolder(val viewDataBinding: CancionItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {

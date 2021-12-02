@@ -8,5 +8,7 @@ data class Coleccionista (
     val coleccionistaId: Int,
     val nombreColeccionista: String,
     val telefonoColeccionista: String,
-    val emailColeccionista: String
-    )
+    val emailColeccionista: String,
+    val commentsColeccionista: String,
+    val favoritePerformersColeccionista: String
+)

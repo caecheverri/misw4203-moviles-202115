@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivImagenColeccionista"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="393dp"
+        android:layout_height="226dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/descripcion_imagen_coleccionista"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImagenColeccionista"
+        app:layout_constraintVertical_bias="0.296"
         tools:text="Telefono" />
 
     <TextView
@@ -56,7 +57,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImagenColeccionista"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.428"
         tools:text="Email" />
 
+    <TextView
+        android:id="@+id/tvcommentsColeccionista"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:text="@{coleccionista.commentsColeccionista}"
+        android:textAlignment="viewStart"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="489dp" />
+
+    <TextView
+        android:id="@+id/tvfavoritePerformersColeccionista"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:text="@{coleccionista.favoritePerformersColeccionista}"
+        android:textAlignment="viewStart"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="536dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

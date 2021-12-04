@@ -5,6 +5,9 @@ import androidx.lifecycle.*
 
 import com.sinapsis.vinilos.models.Cancion
 import com.sinapsis.vinilos.models.repositories.CancionRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CancionViewModel(application: Application) :  AndroidViewModel(application){
@@ -27,16 +30,19 @@ class CancionViewModel(application: Application) :  AndroidViewModel(application
 
     fun getListCancion(albumId: Int) {
         try {
-            cancionRepository.getListCancion(albumId, {
-                _canciones.postValue(it)
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
-            },{
-                _eventNetworkError.value = true
-            })
+            viewModelScope.launch (Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
+                    var data = cancionRepository.refreshData(albumId)
+                    _canciones.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
         } catch (e: Exception) {
             _eventNetworkError.value = true
         }
+
+
     }
 
     fun onNetworkErrorShown() {

@@ -47,7 +47,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     }
 
-    fun getListCancion(albumId:Int, onComplete:(resp:List<Cancion>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getListCancion(albumId:Int) = suspendCoroutine<List<Cancion>>{ cont ->
         requestQueue.add(getRequest("albums/$albumId/tracks",
             { response ->
                 val resp = JSONArray(response)
@@ -60,10 +60,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                         duration = item.getString("duration")
                     ))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
-            {
-                onError(it)
+            {ex ->
+                cont.resumeWithException(ex)
             }))
     }
 

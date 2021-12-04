@@ -15,4 +15,7 @@ class CancionRepository (val application: Application){
             onError
         )
     }
+    suspend fun postCancion(newCancion: Cancion, albumId: Int,): Cancion {
+        return NetworkServiceAdapter.getInstance(application).postCancion(newCancion, albumId)
+    }
 }

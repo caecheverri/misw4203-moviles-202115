@@ -13,14 +13,19 @@
     <string name="descripcion_imagen_album">Imágen de un álbum</string>
     <string name="titulo_crear_album">Crear Álbum</string>
     <string name="label_frm_nombre_album">Nombre Álbum:</string>
+    <string name="label_frm_nombre_cancion">Nombre Canción:</string>
     <string name="titulo_creacion_album">Creación Álbum</string>
+    <string name="titulo_add_cancion">Adicionar Canción</string>
     <string name="label_frm_url_cover_album">Cover Álbum:</string>
+    <string name="label_frm_duracion_cancion">Duración:</string>
     <string name="label_descripcion_album">Descripción Álbum:</string>
     <string name="label_frm_anio">Año Lanzamiento:</string>
     <string name="label_frm_genero">Género</string>
     <string name="label_frm_record_label">Record Label:</string>
     <string name="bttn_frm_add_album_cancelar">Cancelar</string>
     <string name="bttn_frm_add_album_aceptar">Aceptar</string>
+    <string name="bttn_frm_add_cancion_aceptar">Aceptar</string>
     <string name="fab_text_opcion_agregar_album">Agregar Álbum</string>
+    <string name="fab_text_opcion_agregar_cancion">Add Canción</string>
 
 </resources>

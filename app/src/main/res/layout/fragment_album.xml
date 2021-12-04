@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/purple_500"
         android:contentDescription="CONTENT_DESCRIPTION"
         android:text="Opciones"
         android:textColor="@color/white"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/purple_700"
         android:contentDescription="@string/app_name"
         android:minWidth="48dp"
         android:minHeight="48dp"
@@ -65,25 +65,22 @@
         app:tint="@color/white" />
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/add_album_action_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:text="@string/fab_text_opcion_agregar_album"
-        android:textColor="@color/primary"
+        android:textColor="@color/purple_500"
         android:textStyle="bold"
         android:translationX="-80dp"
         android:translationY="-95dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/fab_creacion_album"
         app:layout_constraintEnd_toStartOf="@+id/fab_creacion_album"
-        app:layout_constraintTop_toTopOf="@+id/fab_creacion_album" />
+        app:layout_constraintTop_toTopOf="@+id/fab_creacion_album" />-->
 
     <!--Action name text for the add person button-->
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        android:layout_height="match_parent"
-        tools:listitem="@layout/album_item"/>
-</FrameLayout>

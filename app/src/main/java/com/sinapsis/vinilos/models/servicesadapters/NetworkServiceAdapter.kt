@@ -15,10 +15,7 @@ import org.json.JSONObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
-import com.google.gson.Gson
-import com.sinapsis.vinilos.models.Cancion
-import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter.Companion.BASE_URL
-import java.util.*
+
 
 
 
@@ -58,7 +55,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 var item:JSONObject
                 for (i in 0 until resp.length()) {
                     item = resp.getJSONObject(i)
-                    list.add(i, Cancion(cancionId = item.getInt("id"),
+                    list.add(i, Cancion(
                         name = item.getString("name"),
                         duration = item.getString("duration")
                     ))
@@ -90,26 +87,6 @@ class NetworkServiceAdapter constructor(context: Context) {
             },
             {ex ->
                 cont.resumeWithException(ex)
-            }))
-    }
-
-    fun getListCancion(albumId:Int, onComplete:(resp:List<Cancion>)->Unit, onError: (error:VolleyError)->Unit){
-        requestQueue.add(getRequest("albums/$albumId/tracks",
-            { response ->
-                val resp = JSONArray(response)
-                val list = mutableListOf<Cancion>()
-                var item:JSONObject
-                for (i in 0 until resp.length()) {
-                    item = resp.getJSONObject(i)
-                    list.add(i, Cancion(cancionId = item.getInt("id"),
-                        name = item.getString("name"),
-                        duration = item.getString("duration")
-                    ))
-                }
-                onComplete(list)
-            },
-            {
-                onError(it)
             }))
     }
 
@@ -242,6 +219,30 @@ class NetworkServiceAdapter constructor(context: Context) {
         ))
     }
 
+    suspend fun postCancion(addCancion:Cancion, albumId: Int) = suspendCoroutine<Cancion> { cont ->
+        var jsonString = "{\n" +
+                "    \"name\": \""+addCancion.name +"\",\n" +
+                "    \"duration\":\""+addCancion.duration +"\"\n" +
+                "\n" +
+                "}"
+
+        var newCancionJson = JSONObject(jsonString)
+
+
+        requestQueue.add(postRequest("albums/$albumId/tracks",newCancionJson,
+            { response ->
+                val cancion = Cancion(
+                    name =  response.getString("name"),
+                    duration = response.getString("duration")
+                )
+
+                cont.resume(cancion)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
+            }))
+
+    }
 
     /**
      * Invoca el servicio del API que guarda un nuevo Album

@@ -23,6 +23,9 @@
             android:name=".views.AlbumCreacion"
             android:exported="false" />
         <activity
+            android:name=".views.AddCancion"
+            android:exported="false" />
+        <activity
             android:name=".views.OpcionesActivity"
             android:exported="false" />
         <activity

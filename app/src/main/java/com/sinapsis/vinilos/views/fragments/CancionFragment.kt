@@ -1,5 +1,6 @@
 package com.sinapsis.vinilos.views.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.FragmentCancionBinding
 import com.sinapsis.vinilos.viewmodels.CancionViewModel
+import com.sinapsis.vinilos.views.AddCancion
 import com.sinapsis.vinilos.views.adapters.CancionAdapter
 import com.squareup.picasso.Picasso
 
-class CancionFragment(private val albumId: String, private val urlAlbum: String) : Fragment() {
+class CancionFragment(private val albumId: String, private val urlAlbum: String) : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentCancionBinding? = null
     private val binding get() = _binding!!
@@ -42,12 +44,19 @@ class CancionFragment(private val albumId: String, private val urlAlbum: String)
                 .error(R.drawable.ic_album)
                 .into(binding.ivImagenAlbum)
         })
-
+        setupFabButtons()
         viewModel.eventNetworkError.observe(viewLifecycleOwner, { isNetworkError ->
 
             if (isNetworkError) onNetworkError()
         })
         return binding.root
+    }
+
+    private fun setupFabButtons(){
+
+        binding.fabMenuActions.shrink()
+        binding.fabMenuActions.setOnClickListener(this)
+        binding.fabAddCancion.setOnClickListener(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +74,36 @@ class CancionFragment(private val albumId: String, private val urlAlbum: String)
         if(!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
+        }
+    }
+
+    override fun onClick(view:View?){
+        when (view?.id) {
+            R.id.fab_menu_actions -> {
+                expandOrCollapseFAB()
+            }
+            R.id.fab_add_cancion -> {
+                val addCancion= AddCancion()
+                val activity = requireNotNull(this.activity)
+
+                activity.run{
+                    startActivity(Intent(this, addCancion::class.java))
+                }
+
+            }
+
+        }
+
+    }
+
+    private fun expandOrCollapseFAB() {
+        if (binding.fabMenuActions.isExtended) {
+            binding.fabMenuActions.shrink()
+            binding.fabAddCancion.hide()
+
+        } else {
+            binding.fabMenuActions.extend()
+            binding.fabAddCancion.show()
         }
     }
 }

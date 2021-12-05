@@ -24,7 +24,7 @@ Aplicación móvil para el uso de coleccionistas y melomanos de álbumes de vini
 ***
 - [Kotlin](https://developer.android.com/) - Lenguaje de Programación
 - [Espresso](https://developer.android.com/training/testing/espresso) - Pruebas
-- [AndroidS tudio](https://developer.android.com/studio?hl=es-419&gclid=EAIaIQobChMIrMqb1byG9AIVgyc4Ch0mwAB4EAAYASAAEgL-n_D_BwE&gclsrc=aw.ds) - Entorno de desarrollo IDE
+- [AndroidStudio](https://developer.android.com/studio?hl=es-419&gclid=EAIaIQobChMIrMqb1byG9AIVgyc4Ch0mwAB4EAAYASAAEgL-n_D_BwE&gclsrc=aw.ds) - Entorno de desarrollo IDE
 - [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) - Compilador
 ***
 

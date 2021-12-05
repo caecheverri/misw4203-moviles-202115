@@ -7,7 +7,6 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
-import com.android.volley.*
 import com.android.volley.Response.Listener
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
@@ -97,7 +96,6 @@ class NetworkServiceAdapter constructor(context: Context) {
     /**
      * Invoca el servicio del API que retorna todos los artistas
      */
-
     suspend fun getArtistas() = suspendCoroutine<List<Artista>> { cont ->
         requestQueue.add(getRequest("musicians",
             { response ->
@@ -178,7 +176,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<ColeccionistaFav>()
-                var item:JSONObject? = null
+                var item:JSONObject
                 for (i in 0 until resp.length()) {
                     item = resp.getJSONObject(i)
                     Log.d("Response", item.toString())

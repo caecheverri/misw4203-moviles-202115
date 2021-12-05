@@ -29,7 +29,6 @@ class ColeccionistaDetalle : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         val coleccionistaId = intent.extras?.get("coleccionistaId")
-        val favId = intent.extras?.get("favId")
 
         viewModel = ViewModelProvider(this,ColeccionistaDetalleViewModel.Factory(this.application)).get(ColeccionistaDetalleViewModel::class.java)
         viewModelfav = ViewModelProvider(this,ColeccionistaFavViewModel.Factory(this.application)).get(ColeccionistaFavViewModel::class.java)

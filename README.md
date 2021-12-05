@@ -15,7 +15,7 @@ Aplicación móvil para el uso de coleccionistas y melomanos de álbumes de vini
 |---	|---	|---	|
 |  Iteración Uno 	| - Listar cátalogo de álbumes, Listar artistas, Opciones de aplicación  	|   Implementado	|
 | Iteración Dos  	| - Consultar información detallada del álbum, Consultar información detalla de artista, consultarlistado coleccionista    	|  Implementado  	|
-| Iteración Tres  	| - Consultar la información detallada de coleccionista, Crear un álbum, Asociar tracks con un álbum    	| Por Implementar   	|
+| Iteración Tres  	| - Consultar la información detallada de coleccionista, Crear un álbum, Asociar tracks con un álbum    	| Implementado   	|
 
 ***
 ## Technologias
@@ -24,7 +24,7 @@ Aplicación móvil para el uso de coleccionistas y melomanos de álbumes de vini
 ***
 - [Kotlin](https://developer.android.com/) - Lenguaje de Programación
 - [Espresso](https://developer.android.com/training/testing/espresso) - Pruebas
-- [AndroidS tudio](https://developer.android.com/studio?hl=es-419&gclid=EAIaIQobChMIrMqb1byG9AIVgyc4Ch0mwAB4EAAYASAAEgL-n_D_BwE&gclsrc=aw.ds) - Entorno de desarrollo IDE
+- [AndroidStudio](https://developer.android.com/studio?hl=es-419&gclid=EAIaIQobChMIrMqb1byG9AIVgyc4Ch0mwAB4EAAYASAAEgL-n_D_BwE&gclsrc=aw.ds) - Entorno de desarrollo IDE
 - [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) - Compilador
 ***
 
@@ -39,6 +39,7 @@ $ cd  misw4203-moviles-202115
 > Para Obtener la APK, del proyecto por favor descargue de:
 - [v1.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v1.0.0) - Vinilos
 - [v2.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v2.0.0) - Vinilos
+- [v3.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v3.0.0) - Vinilos
 ***
 ## Desarrollo
 

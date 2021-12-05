@@ -8,20 +8,12 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sinapsis.vinilos.R
-import com.sinapsis.vinilos.databinding.ColeccionistaItemBinding
-import com.sinapsis.vinilos.models.Coleccionista
+import com.sinapsis.vinilos.databinding.FavoritoItemBinding
 import com.sinapsis.vinilos.models.ColeccionistaFav
 import com.sinapsis.vinilos.views.ColeccionistaDetalle
+import com.squareup.picasso.Picasso
 
-
-
-class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.ColeccionistaViewHolder>() {
-    var coleccionistas: List<Coleccionista> = emptyList()
-        @SuppressLint("NotifyDataSetChanged")
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class ColeccionistaFavAdapter :RecyclerView.Adapter<ColeccionistaFavAdapter.ColeccionistaViewFavHolder>() {
 
     var coleccionistasFav: List<ColeccionistaFav> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
@@ -30,7 +22,7 @@ class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.Coleccioni
             notifyDataSetChanged()
         }
 
-    class ColeccionistaViewHolder(val viewDataBinding: ColeccionistaItemBinding) :
+    class ColeccionistaViewFavHolder(val viewDataBinding: FavoritoItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
@@ -38,34 +30,36 @@ class ColeccionistaAdapter :RecyclerView.Adapter<ColeccionistaAdapter.Coleccioni
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColeccionistaViewHolder {
-        val withDataBinding: ColeccionistaItemBinding = DataBindingUtil.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColeccionistaViewFavHolder {
+        val withDataBinding: FavoritoItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            ColeccionistaViewHolder.LAYOUT,
+            ColeccionistaViewFavHolder.LAYOUT,
             parent,
             false
         )
-        return ColeccionistaViewHolder(withDataBinding)
+        return ColeccionistaViewFavHolder(withDataBinding)
     }
 
-    override fun onBindViewHolder(holder: ColeccionistaViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ColeccionistaViewFavHolder, position: Int) {
         holder.viewDataBinding.also {
-            val coleccionista: Coleccionista = coleccionistas[position]
-            it.ivImagenColeccionista.setImageResource(R.drawable.ic_person)
-            it.coleccionista = coleccionista
+            val coleccionistaFav  : ColeccionistaFav = coleccionistasFav[position]
+            Picasso.get().load(coleccionistaFav.imagenFav).placeholder(R.drawable.ic_person)
+                .error(R.drawable.ic_person)
+                .into(it.ivImagenFav)
+            it.favorito = coleccionistaFav
         }
+
 
         holder.itemView.setOnClickListener {view ->
             val intent = Intent(view.context, ColeccionistaDetalle::class.java).apply {
-                putExtra("coleccionistaId", coleccionistas[position].coleccionistaId)
-                //putExtra("favId", coleccionistasFav[position].favId)
+                putExtra("favId", coleccionistasFav[position].favId)
             }
             view.context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return coleccionistas.size
+        return coleccionistasFav.size
     }
 
 }

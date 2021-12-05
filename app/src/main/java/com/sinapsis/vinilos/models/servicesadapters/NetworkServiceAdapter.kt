@@ -1,6 +1,7 @@
 package com.sinapsis.vinilos.models.servicesadapters
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -8,10 +9,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.sinapsis.vinilos.models.Album
-import com.sinapsis.vinilos.models.Artista
-import com.sinapsis.vinilos.models.Cancion
-import com.sinapsis.vinilos.models.Coleccionista
+import com.sinapsis.vinilos.models.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -146,6 +144,53 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     /**
+     * Invoca el servicio del API que retorna un coleccinista dado un id
+     */
+    suspend fun getColeccionista(ColeccionistaId:Int) = suspendCoroutine<Coleccionista> { cont ->
+        requestQueue.add(getRequest("collectors/$ColeccionistaId",
+            { response ->
+                val resp = JSONObject(response)
+                val coleccionista = Coleccionista(
+                    coleccionistaId = resp.getInt("id"),
+                    nombreColeccionista =  resp.getString("name"),
+                    telefonoColeccionista = resp.getString("telephone"),
+                    emailColeccionista = resp.getString("email"),
+                )
+
+                cont.resume(coleccionista)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
+            }))
+    }
+    /**
+     * Invoca el servicio del API que retorna el detalle de los favoritos de un coleccionista dado un id
+     */
+
+    suspend fun getColeccionistaFav(ColeccionistaId: Int,
+        fonComplete:(resp:List<ColeccionistaFav>)->Unit,
+        onError: (VolleyError) -> Unit) = suspendCoroutine<List<ColeccionistaFav>> { cont ->
+        requestQueue.add(getRequest("collectors/$ColeccionistaId/performers",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<ColeccionistaFav>()
+                var item:JSONObject? = null
+                for (i in 0 until resp.length()) {
+                    item = resp.getJSONObject(i)
+                    Log.d("Response", item.toString())
+                    list.add(i, ColeccionistaFav(
+                                favId = item.getInt("id"),
+                                nombreFav = item.getString("name"),
+                                imagenFav = item.getString("image"),
+                                descripcionFav = item.getString("description"),))
+                }
+                cont.resume(list)
+            },
+            {ex ->
+                cont.resumeWithException(ex)
+            }))
+    }
+    /**
      * Invoca el servicio del API que retorna un artista dado un id
      */
     suspend fun getArtista(artistaId:Int) = suspendCoroutine<Artista> { cont ->
@@ -167,31 +212,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    /**
-     * Invoca el servicio del API que retorna un coleccinista dado un id
-     */
-    suspend fun getColeccionista(ColeccionistaId:Int) = suspendCoroutine<Coleccionista> { cont ->
-        requestQueue.add(getRequest("collectors/$ColeccionistaId",
-            { response ->
-                val resp = JSONObject(response)
-                val coleccionista = Coleccionista(
-                    coleccionistaId = resp.getInt("id"),
-                    nombreColeccionista =  resp.getString("name"),
-                    telefonoColeccionista = resp.getString("telephone"),
-                    emailColeccionista = resp.getString("email"),
-                    commentsColeccionista = "_commets",
-                    favoritePerformersColeccionista = "_favoritePerformers"
-                /*  "comments": [],
-                    "favoritePerformers": [],
-                    "collectorAlbums": []    */
-                )
 
-                cont.resume(coleccionista)
-            },
-            {ex ->
-                cont.resumeWithException(ex)
-            }))
-    }
     /**
      * Realiza una petición GET al API
      */

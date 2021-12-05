@@ -3,7 +3,6 @@ import android.app.Application
 import com.sinapsis.vinilos.models.Coleccionista
 import com.sinapsis.vinilos.models.servicesadapters.NetworkServiceAdapter
 
-
 /**
  * Implementa el patrón Repository para las funcionalidades de Coleccionista
  */
@@ -22,4 +21,9 @@ class ColeccionistaRepository (val application: Application) {
         return NetworkServiceAdapter.getInstance(application).getColeccionista(coleccionistaId)
     }
 
-}
+    }
+
+
+
+
+

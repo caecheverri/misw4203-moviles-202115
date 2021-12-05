@@ -67,15 +67,6 @@ class VinilosTest {
     }
 
     @Test
-    fun test_listaFragmentoColeccionistasVisibles() {
-        onView(withId(R.id.btIngresar)).perform(click())
-        onView(withId(R.id.btColeccionista)).perform(click())
-        onView(withId(R.id.ic_collector)).perform(click())
-
-        onView(withId(R.id.rvColeccionista)).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun test_listaFragmentoColeccionistasVisibles()
     {
         onView(withId(R.id.btIngresar)).perform(click())

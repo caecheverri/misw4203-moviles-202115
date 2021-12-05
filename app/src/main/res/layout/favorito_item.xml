@@ -32,17 +32,6 @@
 
 
                 <TextView
-                    android:id="@+id/tvDescripcionFav"
-                    android:layout_width="224dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingTop="3dp"
-                    android:paddingEnd="8dp"
-                    android:paddingBottom="3dp"
-                    android:text="@{favorito.descripcionFav}"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/tvNombreFav"
                     android:layout_width="224dp"
                     android:layout_height="wrap_content"
@@ -51,6 +40,17 @@
                     android:paddingEnd="8dp"
                     android:paddingBottom="3dp"
                     android:text="@{favorito.nombreFav}"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDescripcionFav"
+                    android:layout_width="224dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@{favorito.descripcionFav}"
                     android:textStyle="bold" />
 
             </LinearLayout>

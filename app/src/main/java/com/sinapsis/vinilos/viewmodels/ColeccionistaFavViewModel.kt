@@ -20,20 +20,18 @@ class ColeccionistaFavViewModel (application: Application) : AndroidViewModel(ap
 
     val isNetworkErrorShown: LiveData<Boolean> get() = _isNetworkErrorShown
 
-    fun getColeccionistaFav(coleccionistaId: Int) {
+    fun getColeccionistaFav(coleccionistaId:Int) {
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    _ColeccionistaFav.getColeccionistaFav(coleccionistaId, {
-                        _coleccionista.postValue(it)
+                        _coleccionista.postValue(_ColeccionistaFav.getColeccionistaFav(coleccionistaId))
+
+                    }
                         _eventNetworkError.postValue(false)
                         _isNetworkErrorShown.postValue(false)
-                    },{
-                        _eventNetworkError.value = true
-                    })
 
                 }
-            }
+
         }catch (e: Exception) {
             _eventNetworkError.value = true
         }

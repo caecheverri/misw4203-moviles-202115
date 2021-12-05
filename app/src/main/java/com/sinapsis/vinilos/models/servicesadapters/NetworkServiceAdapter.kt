@@ -167,9 +167,7 @@ class NetworkServiceAdapter constructor(context: Context) {
      * Invoca el servicio del API que retorna el detalle de los favoritos de un coleccionista dado un id
      */
 
-    suspend fun getColeccionistaFav(ColeccionistaId: Int,
-        fonComplete:(resp:List<ColeccionistaFav>)->Unit,
-        onError: (VolleyError) -> Unit) = suspendCoroutine<List<ColeccionistaFav>> { cont ->
+    suspend fun getColeccionistaFav(ColeccionistaId: Int) = suspendCoroutine<List<ColeccionistaFav>> { cont ->
         requestQueue.add(getRequest("collectors/$ColeccionistaId/performers",
             { response ->
                 val resp = JSONArray(response)
@@ -179,10 +177,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                     item = resp.getJSONObject(i)
                     Log.d("Response", item.toString())
                     list.add(i, ColeccionistaFav(
-                                favId = item.getInt("id"),
-                                nombreFav = item.getString("name"),
-                                imagenFav = item.getString("image"),
-                                descripcionFav = item.getString("description"),))
+                        favId = item.getInt("id"),
+                        nombreFav = item.getString("name"),
+                        imagenFav = item.getString("image"),
+                        descripcionFav = item.getString("description"),))
                 }
                 cont.resume(list)
             },

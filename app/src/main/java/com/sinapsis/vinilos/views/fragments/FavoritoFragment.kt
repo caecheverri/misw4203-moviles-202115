@@ -10,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sinapsis.vinilos.databinding.FragmentAlbumBinding
+import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.FragmentFavoritoBinding
 import com.sinapsis.vinilos.models.ColeccionistaFav
 import com.sinapsis.vinilos.viewmodels.ColeccionistaFavViewModel
-import com.sinapsis.vinilos.views.adapters.AlbumAdapter
 import com.sinapsis.vinilos.views.adapters.ColeccionistaFavAdapter
+import com.squareup.picasso.Picasso
 
 
 class FavoritoFragment(private val favId: Int) : Fragment() {
@@ -41,7 +41,13 @@ class FavoritoFragment(private val favId: Int) : Fragment() {
         viewModel.coleccionistaFav.observe(viewLifecycleOwner, {
             it.apply {
                 viewModelAdapter!!.coleccionistasFav = this
+
             }
+           /* Picasso.get().load(this.favId).placeholder(R.drawable.ic_person)
+                .error(R.drawable.ic_person)
+                .into(binding.ivImagenFav)*/
+
+
         })
 
         viewModel.eventNetworkError.observe(viewLifecycleOwner, { isNetworkError ->
@@ -51,7 +57,7 @@ class FavoritoFragment(private val favId: Int) : Fragment() {
         return binding.root
 
     }
-/*
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
@@ -68,7 +74,7 @@ class FavoritoFragment(private val favId: Int) : Fragment() {
             if (isNetworkError) onNetworkError()
         })
     }
-   */
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.rvColeccionistaFav

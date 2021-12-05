@@ -102,4 +102,15 @@ class VinilosTest {
 
         onView(withId(R.id.viewDetalleArtista)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun test_detalleColeccionistaFavoritosVisible() {
+        onView(withId(R.id.btIngresar)).perform(click())
+        onView(withId(R.id.btColeccionista)).perform(click())
+        onView(withId(R.id.ic_collector)).perform(click())
+
+        onView(withId(R.id.rvColeccionista)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.viewDetalleColeccionista)).check(matches(isDisplayed()))
+    }
 }

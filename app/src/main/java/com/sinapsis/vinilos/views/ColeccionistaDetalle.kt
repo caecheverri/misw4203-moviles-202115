@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso
  */
 class ColeccionistaDetalle : AppCompatActivity() {
     private lateinit var binding: ActivityColeccionistaDetalleBinding
+
     private lateinit var viewModel:ColeccionistaDetalleViewModel
     private lateinit var viewModelfav:ColeccionistaFavViewModel
 
@@ -38,7 +39,6 @@ class ColeccionistaDetalle : AppCompatActivity() {
                 binding.tvNombreColeccionista.text = this.nombreColeccionista
                 binding.tvTelefonoColeccionista.text = this.telefonoColeccionista
                 binding.tvEmailColeccionista.text = this.emailColeccionista
-
             }
         })
 

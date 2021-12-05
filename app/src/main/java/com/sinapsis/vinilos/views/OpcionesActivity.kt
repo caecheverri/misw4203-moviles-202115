@@ -21,6 +21,7 @@ class OpcionesActivity : AppCompatActivity() {
     private val albumsFragment = AlbumFragment()
     private val artistasFragment = ArtistaFragment()
     private val coleccionistaFragment = ColeccionistaFragment()
+
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

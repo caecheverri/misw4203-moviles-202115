@@ -10,18 +10,22 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sinapsis.vinilos.R
 import com.sinapsis.vinilos.databinding.FragmentAlbumBinding
 import com.sinapsis.vinilos.models.Album
 import com.sinapsis.vinilos.viewmodels.AlbumViewModel
 import com.sinapsis.vinilos.views.adapters.AlbumAdapter
+import android.content.Intent
+import com.sinapsis.vinilos.views.AlbumCreacion
 
 
-class AlbumFragment : Fragment() {
+class AlbumFragment : Fragment() , View.OnClickListener {
     private var _binding: FragmentAlbumBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: AlbumViewModel
     private var viewModelAdapter: AlbumAdapter? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +49,11 @@ class AlbumFragment : Fragment() {
                 viewModelAdapter!!.albums = this
             }
         })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        setupFabButtons()
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,4 +73,55 @@ class AlbumFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
+
+    private fun setupFabButtons(){
+
+        binding.fabMenuActions.shrink()
+        binding.fabMenuActions.setOnClickListener(this)
+        binding.fabCreacionAlbum.setOnClickListener(this)
+    }
+    private fun showToast(message: String) {
+        Toast.makeText(recyclerView.context,message, Toast.LENGTH_SHORT).show()
+
+    }
+
+
+    override fun onClick(view:View?){
+        when (view?.id) {
+            R.id.fab_menu_actions -> {
+                expandOrCollapseFAB()
+            }
+            R.id.fab_creacion_album -> {
+                val albumCreacion= AlbumCreacion()
+                val activity = requireNotNull(this.activity)
+
+                activity.run{
+                    startActivity(Intent(this, albumCreacion::class.java))
+                }
+
+
+
+            }
+
+        }
+
+    }
+
+
+
+    private fun expandOrCollapseFAB() {
+        if (binding.fabMenuActions.isExtended) {
+            binding.fabMenuActions.shrink()
+            binding.fabCreacionAlbum.hide()
+            //binding.addAlbumActionText.visibility = View.GONE
+
+        } else {
+            binding.fabMenuActions.extend()
+            binding.fabCreacionAlbum.show()
+            //binding.addAlbumActionText.visibility = View.VISIBLE
+        }
+    }
+
+
+
 }

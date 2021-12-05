@@ -15,7 +15,7 @@ Aplicación móvil para el uso de coleccionistas y melomanos de álbumes de vini
 |---	|---	|---	|
 |  Iteración Uno 	| - Listar cátalogo de álbumes, Listar artistas, Opciones de aplicación  	|   Implementado	|
 | Iteración Dos  	| - Consultar información detallada del álbum, Consultar información detalla de artista, consultarlistado coleccionista    	|  Implementado  	|
-| Iteración Tres  	| - Consultar la información detallada de coleccionista, Crear un álbum, Asociar tracks con un álbum    	| Por Implementar   	|
+| Iteración Tres  	| - Consultar la información detallada de coleccionista, Crear un álbum, Asociar tracks con un álbum    	| Implementado   	|
 
 ***
 ## Technologias

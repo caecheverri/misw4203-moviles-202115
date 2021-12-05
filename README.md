@@ -39,6 +39,7 @@ $ cd  misw4203-moviles-202115
 > Para Obtener la APK, del proyecto por favor descargue de:
 - [v1.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v1.0.0) - Vinilos
 - [v2.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v2.0.0) - Vinilos
+- [v3.0.0](https://github.com/caecheverri/misw4203-moviles-202115/releases/tag/v3.0.0) - Vinilos
 ***
 ## Desarrollo
 
